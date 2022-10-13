@@ -137,7 +137,7 @@ lines(density(Qn1),ylab="density",col="red",xlab="")
 mean(Times1)
 sd(apply(rm,1,sd))
 ############################################################################
-##################œ‘÷¯–‘ºÏ—È########################
+##################√è√î√ñ√∏√ê√î¬º√¨√ë√©########################
 ############################################################################
 
 library(nleqslv)  
@@ -237,11 +237,13 @@ for(j in 1:length(YY)){
 #for(k in 1:length(Alpha))
 #        ress[j,k]<-densityf(YY[j],-Alpha[k],0)
 #}
-plot(YY,res0,type="l",ylab="density",xlab="",col="blue",panel.first=grid(10,10,col="gray70"),ylim=c(0,2))#xlim=c(-15,15)
+TeX("$\\kappa$")
+
+plot(YY,res0,type="l",ylab="density",xlab="",col="skyblue1",panel.first=grid(10,10,col="gray70"),ylim=c(0,2))#xlim=c(-15,15)
 #lines(YY,ress,type="l",ylab="density",xlab="",col="red")
-#legend("topleft",inset=.05,  col=c("red","blue"),c("H1", "H0"),lty=c(1,1))
-lines(YY,res1,ylab="density",col="blue",xlab="")
-lines(YY,res2,ylab="density",col="green",xlab="")
-lines(YY,res11,ylab="density",col="red",xlab="")
-lines(YY,res22,ylab="density",col="red",xlab="")
+legend("topleft",inset=0.05,  col=c("red","pink","skyblue1","gray","black"),c(TeX("$\\kappa$=2"),TeX("$\\kappa$=1"),TeX("$\\kappa$=0"),TeX("$\\kappa$=-1"),TeX("$\\kappa$=-2")),lty=c(1,1),bty="n")
+lines(YY,res1,ylab="density",col="pink",xlab="")
+lines(YY,res2,ylab="density",col="red",xlab="")
+lines(YY,res11,ylab="density",col="gray",xlab="")
+lines(YY,res22,ylab="density",col="black",xlab="")
 mean(Times1)
