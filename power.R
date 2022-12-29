@@ -1,5 +1,5 @@
 ####################################################################
-#基于bootstrap的带有扰动的随机梯度下降�?    ##################### 
+#åŸºäºŽbootstrapçš„å¸¦æœ‰æ‰°åŠ¨çš„éšæœºæ¢¯åº¦ä¸‹é™æ³?    ##################### 
 #################################################################
 result<-function(){
   W<-rnorm(150,1,1)
@@ -7,15 +7,15 @@ result<-function(){
   for (b in 1:30) {
     Wb[,b]<-sample(W,150,replace = TRUE)
   }
-  #生成bootstrap数据
-  btsgd<-function(x,y,error,maxiter,step=0.001,B,b,Wb)#B是bootsrap总次�?,b是第几次bootstrap
+  #ç”Ÿæˆbootstrapæ•°æ®
+  btsgd<-function(x,y,error,maxiter,step=0.001,B,b,Wb)#Bæ˜¯bootsrapæ€»æ¬¡æ•?,bæ˜¯ç¬¬å‡ æ¬¡bootstrap
   { 
     m<-nrow(x)
     
     n<-ncol(x) 
-    theta<-matrix(rep(0,n),n,1)  #ktheta初始值都设置�?0
-    iter<-0   #迭代次数
-    k<-0  #第k个样�?
+    theta<-matrix(rep(0,n),n,1)  #kthetaåˆå§‹å€¼éƒ½è®¾ç½®ä¸?0
+    iter<-0   #è¿­ä»£æ¬¡æ•°
+    k<-0  #ç¬¬kä¸ªæ ·æœ?
     newerror<-1 
     
     while(iter<maxiter|newerror>error){
@@ -34,23 +34,23 @@ result<-function(){
     }
     costfunction<-(t(x%*%theta-y)%*%(x%*%theta-y))/m
     result<-c(theta,iter,costfunction)
-    #names(result)<-c('系数','系数','系数','系数','系数','迭代次数','误差')
+    #names(result)<-c('ç³»æ•°','ç³»æ•°','ç³»æ•°','ç³»æ•°','ç³»æ•°','è¿­ä»£æ¬¡æ•°','è¯¯å·®')
     result 
   }
   #########################
-  #生成数据  100个样�?#####
+  #ç”Ÿæˆæ•°æ®  100ä¸ªæ ·æœ?#####
   #########################
   
-  x<-array(runif(500,0,30),c(100,5))#协变�?
-  thet<-c(1,2,3,4,10) #要估计的参数
-  y<-x%*%thet+rnorm(100)#模型
+  x<-array(runif(500,0,30),c(100,5))#åå˜é‡?
+  thet<-c(1,2,3,4,10) #è¦ä¼°è®¡çš„å‚æ•°
+  y<-x%*%thet+rnorm(100)#æ¨¡åž‹
   #btsgd(x,y,error=1,maxiter=1000,step=0.001,B=500,b=3,Wb)
   
   
   
   
   ############################
-  ##   500次bootsrap      ###
+  ##   500æ¬¡bootsrap      ###
   ############################
   
   r1<-matrix(data=0,5,30)
@@ -63,9 +63,9 @@ result<-function(){
     #r3[b]<-(t(r1[,b]-thet))%*%(r1[,b]-thet)
   }
   
-  #plot(density(r3),type="l",ylab="密度函数",xlab="误差",col="red",xlim=c(-5,5))
+  #plot(density(r3),type="l",ylab="å¯†åº¦å‡½æ•°",xlab="è¯¯å·®",col="red",xlim=c(-5,5))
   #mean(r3)
-  #r1是我们需要的数据,但是这里r1是向�?
+  #r1æ˜¯æˆ‘ä»¬éœ€è¦çš„æ•°æ®,ä½†æ˜¯è¿™é‡Œr1æ˜¯å‘é‡?
   #r1
   #dim(r1)
   return(r1)
